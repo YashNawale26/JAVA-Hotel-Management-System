@@ -1,8 +1,9 @@
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Dashboard extends JFrame {
+public class Dashboard extends JFrame implements ActionListener{
     Dashboard(){
         setBounds(0,0,1550,1000);
 
@@ -31,6 +32,7 @@ public class Dashboard extends JFrame {
         mb.add(hotel);
 
         JMenuItem reception = new JMenuItem("RECEPTION");
+        reception.addActionListener(this);
         hotel.add(reception);
 
 
@@ -39,17 +41,30 @@ public class Dashboard extends JFrame {
         mb.add(admin);
 
         JMenuItem addemployee = new JMenuItem("ADD EMPLOYEE");
+        addemployee.addActionListener(this);
         admin.add(addemployee);
 
         JMenuItem addrooms = new JMenuItem("ADD ROOMS");
+        addrooms.addActionListener(this);
         admin.add(addrooms);
 
         JMenuItem adddrivers = new JMenuItem("ADD DRIVER");
+        adddrivers.addActionListener(this);
         admin.add(adddrivers);
-
 
         setVisible(true);
 
+    }
+
+    public void actionPerformed(ActionEvent ae){  //getSource() == button is used in case of button
+        if(ae.getActionCommand().equals("ADD EMPLOYEE"))  //getActionCommand compares the text when a click is performed on the menu item
+            new AddEmployee();
+        if(ae.getActionCommand().equals("ADD ROOMS"))
+            new AddRooms();
+        if(ae.getActionCommand().equals("ADD DRIVER"))
+            new AddDriver();
+        if(ae.getActionCommand().equals("RECEPTION"))
+            new Reception();
     }
 
     public static void main(String [] args){

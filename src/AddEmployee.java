@@ -202,11 +202,12 @@ public class AddEmployee extends JFrame implements ActionListener {
 
             JOptionPane.showMessageDialog(null, "Employee added successfully");
 
+            setEnabled(true);
             setVisible(false);
+
         } catch (Exception E){
             E.printStackTrace();
         }
-
     }
 
     public static void main(String[] args) {
